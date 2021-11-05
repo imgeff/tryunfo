@@ -3,6 +3,14 @@ import Form from './components/Form';
 import './App.css';
 
 class App extends React.Component {
+  onInputChange() {
+    console.log('Esperando Implementação');
+  }
+
+  onSaveButtonClick() {
+    console.log('Esperando Implementação');
+  }
+
   render() {
     return (
       <fieldset>
@@ -18,8 +26,8 @@ class App extends React.Component {
           cardTrunfo={ false }
           hasTrunfo={ false }
           isSaveButtonDisabled={ false }
-          onInputChange={ onInputChange }
-          onSaveButtonClick={ onSaveButtonClick }
+          onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
       </fieldset>
     );
