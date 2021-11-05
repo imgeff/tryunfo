@@ -13,18 +13,23 @@ class Card extends React.Component {
       cardTrunfo,
     } = this.props;
 
-    const spanTrunfo = <span data-testid="trunfo-card">Super Trunfo</span>;
+    const spanTrunfo = <span id="trunfo" data-testid="trunfo-card">Super Trunfo</span>;
     const trunfoCard = (cardTrunfo === true) ? spanTrunfo : '';
 
     return (
-      <div>
-        <span data-testid="name-card">{ cardName }</span>
-        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
-        <p data-testid="description-card">{ cardDescription }</p>
-        <span data-testid="attr1-card">{ cardAttr1 }</span>
-        <span data-testid="attr2-card">{ cardAttr2 }</span>
-        <span data-testid="attr3-card">{ cardAttr3 }</span>
-        <span data-testid="rare-card">{ cardRare }</span>
+      <div className="card-preview">
+        <span id="name-card-preview" data-testid="name-card">{ cardName }</span>
+        <img
+          id="image-card-preview"
+          data-testid="image-card"
+          src={ cardImage }
+          alt={ cardName }
+        />
+        <p id="description-preview" data-testid="description-card">{ cardDescription }</p>
+        <span id="atribute1-preview" data-testid="attr1-card">{ cardAttr1 }</span>
+        <span id="atribute2-preview" data-testid="attr2-card">{ cardAttr2 }</span>
+        <span id="atribute3-preview" data-testid="attr3-card">{ cardAttr3 }</span>
+        <span id="rare-card-preview" data-testid="rare-card">{ cardRare }</span>
         {trunfoCard}
       </div>
     );
