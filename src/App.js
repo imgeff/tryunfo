@@ -18,6 +18,7 @@ class App extends React.Component {
       buttonSave: true,
       baralho: [],
     };
+    this.validateTrunfoCard = this.validateTrunfoCard.bind(this);
     this.clearInputs = this.clearInputs.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -104,6 +105,16 @@ class App extends React.Component {
     });
   }
 
+  validateTrunfoCard() {
+    let hasTrunfo = false;
+    const { baralho } = this.state;
+    const validate = baralho.some((carta) => (
+      carta.trunfoCard === true
+    ));
+    if (validate === true) hasTrunfo = true;
+    return hasTrunfo;
+  }
+
   render() {
     const { nameCard,
       descriptionCard,
@@ -128,7 +139,7 @@ class App extends React.Component {
           cardImage={ imageCard }
           cardRare={ raridadeCard }
           cardTrunfo={ trunfoCard }
-          hasTrunfo={ false }
+          hasTrunfo={ this.validateTrunfoCard() }
           isSaveButtonDisabled={ buttonSave }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
