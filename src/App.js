@@ -15,7 +15,7 @@ class App extends React.Component {
       imageCard: '',
       raridadeCard: '',
       trunfoCard: false,
-      buttonSave: false,
+      buttonSave: true,
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -24,8 +24,42 @@ class App extends React.Component {
   onInputChange({ target }) {
     const { name } = target;
     const value = (target.type === 'checkbox' ? target.checked : target.value);
-    this.setState({
-      [name]: value,
+    this.setState({ [name]: value }, () => {
+      const {
+        nameCard,
+        descriptionCard,
+        atribute1Card,
+        atribute2Card,
+        atribute3Card,
+        imageCard,
+        buttonSave,
+      } = this.state;
+      const atribute1Number = Number(atribute1Card);
+      const atribute2Number = Number(atribute2Card);
+      const atribute3Number = Number(atribute3Card);
+      const atributeMin = 0;
+      const atributeMax = 90;
+      const sumAtribute = atribute1Number + atribute2Number + atribute3Number;
+      const geralAtribute = 210;
+      this.setState({
+        buttonSave: false,
+      });
+      if (nameCard === '' || descriptionCard === '' || imageCard === '') {
+        this.setState({ buttonSave: true });
+      }
+      if (atribute1Card < atributeMin || atribute1Card > atributeMax) {
+        this.setState({ buttonSave: true });
+      }
+      if (atribute2Card < atributeMin || atribute2Card > atributeMax) {
+        this.setState({ buttonSave: true });
+      }
+      if (atribute3Card < atributeMin || atribute3Card > atributeMax) {
+        this.setState({ buttonSave: true });
+      }
+      if (sumAtribute > geralAtribute) {
+        this.setState({ buttonSave: true });
+      }
+      return buttonSave;
     });
   }
 
