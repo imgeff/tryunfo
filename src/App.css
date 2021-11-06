@@ -15,3 +15,11 @@ textarea {
 select {
   width: 95%;
 }
+
+.card-preview {
+  align-items: center;
+  background-color: rgb(163, 224, 224);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
