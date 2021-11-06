@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Baralho from './components/Baralho';
 
 class App extends React.Component {
   constructor() {
@@ -88,7 +89,6 @@ class App extends React.Component {
         trunfoCard,
       }],
     }));
-
     this.clearInputs();
   }
 
@@ -125,6 +125,7 @@ class App extends React.Component {
       raridadeCard,
       trunfoCard,
       buttonSave,
+      baralho,
     } = this.state;
 
     return (
@@ -154,6 +155,19 @@ class App extends React.Component {
           cardRare={ raridadeCard }
           cardTrunfo={ trunfoCard }
         />
+        {baralho.map((carta, index) => (
+          <Baralho
+            key={ index }
+            nameCard={ carta.nameCard }
+            descriptionCard={ carta.descriptionCard }
+            atribute1Card={ carta.atribute1Card }
+            atribute2Card={ carta.atribute2Card }
+            atribute3Card={ carta.atribute3Card }
+            imageCard={ carta.imageCard }
+            raridadeCard={ carta.raridadeCard }
+            trunfoCard={ carta.trunfoCard }
+          />
+        ))}
       </fieldset>
     );
   }
