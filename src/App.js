@@ -13,10 +13,12 @@ class App extends React.Component {
       atribute2Card: 0,
       atribute3Card: 0,
       imageCard: '',
-      raridadeCard: '',
+      raridadeCard: 'Normal',
       trunfoCard: false,
       buttonSave: true,
+      baralho: [],
     };
+    this.clearInputs = this.clearInputs.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
@@ -63,8 +65,43 @@ class App extends React.Component {
     });
   }
 
-  onSaveButtonClick() {
-    console.log('Esperando Implementação');
+  onSaveButtonClick(event) {
+    event.preventDefault();
+    const { baralho,
+      nameCard,
+      descriptionCard,
+      atribute1Card,
+      atribute2Card,
+      atribute3Card,
+      imageCard,
+      raridadeCard,
+      trunfoCard } = this.state;
+    this.setState(({
+      baralho: [...baralho, { nameCard,
+        descriptionCard,
+        atribute1Card,
+        atribute2Card,
+        atribute3Card,
+        imageCard,
+        raridadeCard,
+        trunfoCard,
+      }],
+    }));
+
+    this.clearInputs();
+  }
+
+  clearInputs() {
+    this.setState({
+      nameCard: '',
+      descriptionCard: '',
+      atribute1Card: 0,
+      atribute2Card: 0,
+      atribute3Card: 0,
+      imageCard: '',
+      raridadeCard: 'Normal',
+      trunfoCard: false,
+    });
   }
 
   render() {
