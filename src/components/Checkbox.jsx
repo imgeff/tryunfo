@@ -5,8 +5,8 @@ class CheckBox extends React.Component {
   render() {
     const { label, testId, id, type, name, checked, func } = this.props;
     return (
-      <label htmlFor={ id }>
-        {label}
+      <div className={ testId }>
+        <label htmlFor={ id }>{label}</label>
         <input
           data-testid={ testId }
           id={ id }
@@ -15,7 +15,7 @@ class CheckBox extends React.Component {
           checked={ checked }
           onChange={ func }
         />
-      </label>
+      </div>
     );
   }
 }

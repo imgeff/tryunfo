@@ -41,6 +41,7 @@ class Form extends React.Component {
 
     return (
       <form>
+        <h1>Tryunfo</h1>
         <Input
           label="Nome da Carta"
           testId="name-input"
@@ -48,15 +49,6 @@ class Form extends React.Component {
           type="text"
           name="nameCard"
           value={ cardName }
-          func={ onInputChange }
-        />
-        <TextArea
-          label="Descrição"
-          testId="description-input"
-          id="description-input-Card"
-          type="textarea"
-          name="descriptionCard"
-          value={ cardDescription }
           func={ onInputChange }
         />
         <Input
@@ -101,6 +93,15 @@ class Form extends React.Component {
           id="rare-input-Card"
           name="raridadeCard"
           value={ cardRare }
+          func={ onInputChange }
+        />
+        <TextArea
+          label="Descrição"
+          testId="description-input"
+          id="description-input-Card"
+          type="textarea"
+          name="descriptionCard"
+          value={ cardDescription }
           func={ onInputChange }
         />
         { hasTrunfoCard }

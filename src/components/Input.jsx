@@ -5,17 +5,19 @@ class Input extends React.Component {
   render() {
     const { label, testId, id, type, name, value, func } = this.props;
     return (
-      <label htmlFor={ id }>
-        {label}
-        <input
-          data-testid={ testId }
-          id={ id }
-          type={ type }
-          name={ name }
-          value={ value }
-          onChange={ func }
-        />
-      </label>
+      <div>
+        <label htmlFor={ id } id={ testId }>
+          {label}
+          <input
+            data-testid={ testId }
+            id={ id }
+            type={ type }
+            name={ name }
+            value={ value }
+            onChange={ func }
+          />
+        </label>
+      </div>
     );
   }
 }

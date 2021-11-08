@@ -1,27 +1,42 @@
 fieldset {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  align-items: center;
+  display: flex;
   flex-direction: column;
+  height: 100vh;
+  text-align: center;
+  width: 50%;
 }
 
-input {
-  width: 95%;
-}
-
-textarea {
-  width: 95%;
-}
-
-select {
-  width: 95%;
+form div {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
 .card-preview {
   align-items: center;
-  background-color: rgb(163, 224, 224);
+  background-color: white;
   border-radius: 5px;
+  box-sizing: content-box;
   display: flex;
   flex-direction: column;
+  height: 420px;
+  justify-content: center;
+  width: 285px;
+}
+
+.card-preview img {
+  height: 200px;
+  width: 285px;
 }
 
 .card {
@@ -30,4 +45,63 @@ select {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+}
+
+input, textarea, select {
+  border-bottom: 2px solid rgb(2, 48, 49);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  display: flex;
+  justify-content: center;
+  margin-left: 5px;
+  padding: 3px;
+  text-align: center;
+  width: 50vh;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+input {
+  text-align: center;
+}
+
+select {
+  background-color: white;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  width: 100%;
+}
+
+.trunfo-input {
+  align-items: center;
+  display: flex;
+  margin: 10px 0;
+}
+
+.trunfo-input input {
+  width: 2%;
+}
+
+.trunfo-input label {
+  margin-top: 0;
+}
+
+button {
+  margin-left: 5px;
+}
+
+.box-card-preview {
+  align-items: center;
+  background: rgb(2, 48, 49);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 50%;
 }

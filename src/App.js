@@ -130,7 +130,6 @@ class App extends React.Component {
 
     return (
       <fieldset>
-        <h1>Tryunfo</h1>
         <Form
           cardName={ nameCard }
           cardDescription={ descriptionCard }
@@ -145,16 +144,18 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
-        <Card
-          cardName={ nameCard }
-          cardDescription={ descriptionCard }
-          cardAttr1={ atribute1Card }
-          cardAttr2={ atribute2Card }
-          cardAttr3={ atribute3Card }
-          cardImage={ imageCard }
-          cardRare={ raridadeCard }
-          cardTrunfo={ trunfoCard }
-        />
+        <div className="box-card-preview">
+          <Card
+            cardName={ nameCard }
+            cardDescription={ descriptionCard }
+            cardAttr1={ atribute1Card }
+            cardAttr2={ atribute2Card }
+            cardAttr3={ atribute3Card }
+            cardImage={ imageCard }
+            cardRare={ raridadeCard }
+            cardTrunfo={ trunfoCard }
+          />
+        </div>
         {baralho.map((carta, index) => (
           <Baralho
             key={ index }
