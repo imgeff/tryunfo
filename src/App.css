@@ -22,11 +22,10 @@ form div {
   width: 100%;
 }
 
-.card-preview {
+.card-preview, .card {
   align-items: center;
   background-color: white;
   border-radius: 5px;
-  box-sizing: content-box;
   display: flex;
   flex-direction: column;
   height: 420px;
@@ -34,17 +33,15 @@ form div {
   width: 285px;
 }
 
-.card-preview img {
+.card-preview img, .card img {
   height: 200px;
   width: 285px;
 }
 
 .card {
-  align-items: center;
-  background-color: rgb(0, 245, 245);
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
+  background-color: rgb(3, 107, 82);
+  color: white;
+  margin-left: 20px;
 }
 
 input, textarea, select {

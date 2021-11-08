@@ -12,6 +12,7 @@ class Baralho extends React.Component {
       atribute3Card,
       raridadeCard,
       trunfoCard,
+      handleClick,
     } = this.props;
 
     const spanTrunfo = <span id="trunfo">Super Trunfo</span>;
@@ -31,6 +32,13 @@ class Baralho extends React.Component {
         <span id="atribute3-preview">{ atribute3Card }</span>
         <span id="rare-card-preview">{ raridadeCard }</span>
         {trunfo}
+        <button
+          data-testid="delete-button"
+          type="button"
+          onClick={ handleClick }
+        >
+          excluir
+        </button>
       </div>
     );
   }
@@ -42,9 +50,10 @@ Baralho.propTypes = {
   descriptionCard: PropTypes.string.isRequired,
   imageCard: PropTypes.string.isRequired,
   raridadeCard: PropTypes.string.isRequired,
-  trunfoCard: PropTypes.string.isRequired,
+  trunfoCard: PropTypes.bool.isRequired,
   atribute1Card: PropTypes.number.isRequired,
   atribute2Card: PropTypes.number.isRequired,
   atribute3Card: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 export default Baralho;

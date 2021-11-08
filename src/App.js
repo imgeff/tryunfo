@@ -19,10 +19,21 @@ class App extends React.Component {
       buttonSave: true,
       baralho: [],
     };
+    this.handleClick = this.handleClick.bind(this);
     this.validateTrunfoCard = this.validateTrunfoCard.bind(this);
     this.clearInputs = this.clearInputs.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+  }
+
+  handleClick({ target }) {
+    const { baralho } = this.state;
+    const name = target.parentNode.firstChild.innerText;
+    this.setState(({
+      baralho: baralho.filter((card) => (
+        card.nameCard !== name
+      )),
+    }));
   }
 
   onInputChange({ target }) {
@@ -128,6 +139,8 @@ class App extends React.Component {
       baralho,
     } = this.state;
 
+    const { handleClick } = this;
+
     return (
       <fieldset>
         <Form
@@ -167,6 +180,7 @@ class App extends React.Component {
             imageCard={ carta.imageCard }
             raridadeCard={ carta.raridadeCard }
             trunfoCard={ carta.trunfoCard }
+            handleClick={ handleClick }
           />
         ))}
       </fieldset>
