@@ -19,6 +19,7 @@ class App extends React.Component {
       buttonSave: true,
       baralho: [],
     };
+    this.filterCard = this.filterCard.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.validateTrunfoCard = this.validateTrunfoCard.bind(this);
     this.clearInputs = this.clearInputs.bind(this);
@@ -26,12 +27,11 @@ class App extends React.Component {
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
-  handleClick({ target }) {
+  handleClick(nameCard) {
     const { baralho } = this.state;
-    const name = target.parentNode.firstChild.innerText;
     this.setState(({
       baralho: baralho.filter((card) => (
-        card.nameCard !== name
+        card.nameCard !== nameCard
       )),
     }));
   }
@@ -126,6 +126,20 @@ class App extends React.Component {
     return hasTrunfo;
   }
 
+  filterCard({ target }) {
+    const { baralho } = this.state;
+    const baralhoFilter = baralho.some((card) => (
+      card.nameCard === target.value
+    ));
+    if (baralhoFilter) {
+      this.setState({
+        baralho: baralho.filter((card) => (
+          card.nameCard === target.value
+        )),
+      });
+    }
+  }
+
   render() {
     const { nameCard,
       descriptionCard,
@@ -169,7 +183,7 @@ class App extends React.Component {
             cardTrunfo={ trunfoCard }
           />
         </div>
-        {baralho.map((carta, index) => (
+        {baralho.length > 0 && baralho.map((carta, index) => (
           <Baralho
             key={ index }
             nameCard={ carta.nameCard }
@@ -183,6 +197,15 @@ class App extends React.Component {
             handleClick={ handleClick }
           />
         ))}
+        <label htmlFor="name-filter">
+          Filtrar:
+          <input
+            type="text"
+            data-testid="name-filter"
+            id="name-filter"
+            onChange={ this.filterCard }
+          />
+        </label>
       </fieldset>
     );
   }

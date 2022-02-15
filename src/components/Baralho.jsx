@@ -18,6 +18,8 @@ class Baralho extends React.Component {
     const spanTrunfo = <span id="trunfo">Super Trunfo</span>;
     const trunfo = (trunfoCard === true) ? spanTrunfo : '';
 
+    // console.log(nameCard);
+
     return (
       <div className="card">
         <span id="name-card">{ nameCard }</span>
@@ -35,7 +37,7 @@ class Baralho extends React.Component {
         <button
           data-testid="delete-button"
           type="button"
-          onClick={ handleClick }
+          onClick={ () => handleClick(nameCard) }
         >
           excluir
         </button>
