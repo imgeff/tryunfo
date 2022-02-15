@@ -18,6 +18,7 @@ class App extends React.Component {
       trunfoCard: false,
       buttonSave: true,
       baralho: [],
+      copyBaralho: [],
     };
     this.filterCard = this.filterCard.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -99,6 +100,14 @@ class App extends React.Component {
         raridadeCard,
         trunfoCard,
       }],
+      copyBaralho: [...baralho, { nameCard,
+        descriptionCard,
+        atribute1Card,
+        atribute2Card,
+        atribute3Card,
+        imageCard,
+        raridadeCard,
+        trunfoCard }],
     }));
     this.clearInputs();
   }
@@ -128,16 +137,11 @@ class App extends React.Component {
 
   filterCard({ target }) {
     const { baralho } = this.state;
-    const baralhoFilter = baralho.some((card) => (
-      card.nameCard === target.value
-    ));
-    if (baralhoFilter) {
-      this.setState({
-        baralho: baralho.filter((card) => (
-          card.nameCard === target.value
-        )),
-      });
-    }
+    this.setState({
+      copyBaralho: baralho.filter((card) => (
+        card.nameCard.includes(target.value)
+      )),
+    });
   }
 
   render() {
@@ -150,7 +154,7 @@ class App extends React.Component {
       raridadeCard,
       trunfoCard,
       buttonSave,
-      baralho,
+      copyBaralho,
     } = this.state;
 
     const { handleClick } = this;
@@ -183,7 +187,7 @@ class App extends React.Component {
             cardTrunfo={ trunfoCard }
           />
         </div>
-        {baralho.length > 0 && baralho.map((carta, index) => (
+        {copyBaralho.length > 0 && copyBaralho.map((carta, index) => (
           <Baralho
             key={ index }
             nameCard={ carta.nameCard }
