@@ -51,9 +51,9 @@ Baralho.propTypes = {
   imageCard: PropTypes.string.isRequired,
   rarity: PropTypes.string.isRequired,
   trunfoCard: PropTypes.bool.isRequired,
-  atribute1Card: PropTypes.number.isRequired,
-  atribute2Card: PropTypes.number.isRequired,
-  atribute3Card: PropTypes.number.isRequired,
+  atribute1Card: PropTypes.string.isRequired,
+  atribute2Card: PropTypes.string.isRequired,
+  atribute3Card: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
 };
 export default Baralho;
