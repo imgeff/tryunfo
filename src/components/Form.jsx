@@ -91,7 +91,7 @@ class Form extends React.Component {
           label="Raridade da Carta"
           testId="rare-input"
           id="rare-input-Card"
-          name="raridadeCard"
+          name="rarity"
           value={ cardRare }
           func={ onInputChange }
         />

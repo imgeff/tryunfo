@@ -14,9 +14,9 @@ class Select extends React.Component {
           onChange={ func }
           value={ value }
         >
-          <option value="normal" name={ name }>Normal</option>
-          <option value="raro" name={ name }>Raro</option>
-          <option value="muito raro" name={ name }>Muito Raro</option>
+          <option value="normal" name={ name }>normal</option>
+          <option value="raro" name={ name }>raro</option>
+          <option value="muito raro" name={ name }>muito raro</option>
         </select>
       </label>
     );

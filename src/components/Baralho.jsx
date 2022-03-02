@@ -10,15 +10,13 @@ class Baralho extends React.Component {
       atribute1Card,
       atribute2Card,
       atribute3Card,
-      raridadeCard,
+      rarity,
       trunfoCard,
       handleClick,
     } = this.props;
 
     const spanTrunfo = <span id="trunfo">Super Trunfo</span>;
     const trunfo = (trunfoCard === true) ? spanTrunfo : '';
-
-    // console.log(nameCard);
 
     return (
       <div className="card">
@@ -32,7 +30,7 @@ class Baralho extends React.Component {
         <span id="atribute1-preview">{ atribute1Card }</span>
         <span id="atribute2-preview">{ atribute2Card }</span>
         <span id="atribute3-preview">{ atribute3Card }</span>
-        <span id="rare-card-preview">{ raridadeCard }</span>
+        <span id="rare-card-preview">{ rarity }</span>
         {trunfo}
         <button
           data-testid="delete-button"
@@ -51,7 +49,7 @@ Baralho.propTypes = {
   nameCard: PropTypes.string.isRequired,
   descriptionCard: PropTypes.string.isRequired,
   imageCard: PropTypes.string.isRequired,
-  raridadeCard: PropTypes.string.isRequired,
+  rarity: PropTypes.string.isRequired,
   trunfoCard: PropTypes.bool.isRequired,
   atribute1Card: PropTypes.number.isRequired,
   atribute2Card: PropTypes.number.isRequired,

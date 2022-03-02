@@ -14,12 +14,14 @@ class App extends React.Component {
       atribute2Card: 0,
       atribute3Card: 0,
       imageCard: '',
-      raridadeCard: 'Normal',
+      rarity: 'normal',
       trunfoCard: false,
       buttonSave: true,
       baralho: [],
       copyBaralho: [],
+      filters: { name: '', rarity: 'todas' },
     };
+    this.handleFilterChange = this.handleFilterChange.bind(this);
     this.filterCard = this.filterCard.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.validateTrunfoCard = this.validateTrunfoCard.bind(this);
@@ -30,11 +32,21 @@ class App extends React.Component {
 
   handleClick(nameCard) {
     const { baralho } = this.state;
-    this.setState(({
-      baralho: baralho.filter((card) => (
+    const removeCard = baralho
+      .filter((card) => (
         card.nameCard !== nameCard
-      )),
+      ));
+    this.setState(({
+      baralho: removeCard,
+      copyBaralho: removeCard,
     }));
+  }
+
+  handleFilterChange({ target: { name, value } }) {
+    this.setState((prevState) => ({ filters: { ...prevState.filters, [name]: value } }),
+      () => {
+        this.filterCard();
+      });
   }
 
   onInputChange({ target }) {
@@ -88,7 +100,7 @@ class App extends React.Component {
       atribute2Card,
       atribute3Card,
       imageCard,
-      raridadeCard,
+      rarity,
       trunfoCard } = this.state;
     this.setState(({
       baralho: [...baralho, { nameCard,
@@ -97,7 +109,7 @@ class App extends React.Component {
         atribute2Card,
         atribute3Card,
         imageCard,
-        raridadeCard,
+        rarity,
         trunfoCard,
       }],
       copyBaralho: [...baralho, { nameCard,
@@ -106,7 +118,7 @@ class App extends React.Component {
         atribute2Card,
         atribute3Card,
         imageCard,
-        raridadeCard,
+        rarity,
         trunfoCard }],
     }));
     this.clearInputs();
@@ -120,7 +132,7 @@ class App extends React.Component {
       atribute2Card: 0,
       atribute3Card: 0,
       imageCard: '',
-      raridadeCard: 'Normal',
+      rarity: 'normal',
       trunfoCard: false,
     });
   }
@@ -135,13 +147,17 @@ class App extends React.Component {
     return hasTrunfo;
   }
 
-  filterCard({ target }) {
-    const { baralho } = this.state;
-    this.setState({
-      copyBaralho: baralho.filter((card) => (
-        card.nameCard.includes(target.value)
-      )),
-    });
+  filterCard() {
+    const { baralho, filters: { name, rarity } } = this.state;
+    const filterNameAndRarity = baralho
+      .filter((card) => card.nameCard.includes(name))
+      .filter((card) => {
+        if (rarity === 'todas') {
+          return card.rarity !== rarity;
+        }
+        return card.rarity === rarity;
+      });
+    this.setState({ copyBaralho: filterNameAndRarity });
   }
 
   render() {
@@ -151,7 +167,7 @@ class App extends React.Component {
       atribute2Card,
       atribute3Card,
       imageCard,
-      raridadeCard,
+      rarity,
       trunfoCard,
       buttonSave,
       copyBaralho,
@@ -168,7 +184,7 @@ class App extends React.Component {
           cardAttr2={ atribute2Card }
           cardAttr3={ atribute3Card }
           cardImage={ imageCard }
-          cardRare={ raridadeCard }
+          cardRare={ rarity }
           cardTrunfo={ trunfoCard }
           hasTrunfo={ this.validateTrunfoCard() }
           isSaveButtonDisabled={ buttonSave }
@@ -183,7 +199,7 @@ class App extends React.Component {
             cardAttr2={ atribute2Card }
             cardAttr3={ atribute3Card }
             cardImage={ imageCard }
-            cardRare={ raridadeCard }
+            cardRare={ rarity }
             cardTrunfo={ trunfoCard }
           />
         </div>
@@ -196,7 +212,7 @@ class App extends React.Component {
             atribute2Card={ carta.atribute2Card }
             atribute3Card={ carta.atribute3Card }
             imageCard={ carta.imageCard }
-            raridadeCard={ carta.raridadeCard }
+            rarity={ carta.rarity }
             trunfoCard={ carta.trunfoCard }
             handleClick={ handleClick }
           />
@@ -204,12 +220,24 @@ class App extends React.Component {
         <label htmlFor="name-filter">
           Filtrar:
           <input
+            name="name"
             type="text"
             data-testid="name-filter"
             id="name-filter"
-            onChange={ this.filterCard }
+            onChange={ this.handleFilterChange }
           />
         </label>
+        <select
+          data-testid="rare-filter"
+          name="rarity"
+          onChange={ this.handleFilterChange }
+        >
+          Raridade
+          <option>todas</option>
+          <option>normal</option>
+          <option>raro</option>
+          <option>muito raro</option>
+        </select>
       </fieldset>
     );
   }
